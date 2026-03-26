@@ -1,45 +1,38 @@
 <form
   [formGroup]="form"
   (ngSubmit)="handleSubmit()"
-  class="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4"
+  class="flex flex-row items-center h-16 rounded-2xl bg-zinc-900/50 border border-white/5 backdrop-blur-md w-full px-4 transition-all duration-300 focus-within:border-violet-500/30 focus-within:bg-zinc-900/80 shadow-2xl"
 >
-
   <div class="flex-grow">
-    <div class="flex">
-
+    <div class="flex items-center">
       <input
         type="text"
         autofocus
-        class="flex w-full border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
+        class="flex w-full bg-transparent border-none text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-0 pl-1 h-10 text-sm"
         [placeholder]="placeholder"
         formControlName="prompt"
       />
 
       <select
         formControlName="selectedOption"
-        class="w-2/5 ml-5 border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10">
-        <option value="">Seleccione</option>
+        class="w-2/5 ml-4 bg-zinc-800/50 border border-white/10 rounded-xl text-zinc-300 text-xs focus:outline-none focus:border-violet-500/50 focus:bg-zinc-800 px-3 h-10 transition-all cursor-pointer"
+      >
+        <option value="" class="bg-zinc-900">Seleccione</option>
         @for (option of options; track option.id) {
-          <option [value]="option.id">{{ option.text }}</option>
+          <option [value]="option.id" class="bg-zinc-900">{{ option.text }}</option>
         }
-
       </select>
-
-
-
     </div>
   </div>
 
   <div class="ml-4">
     <button
-      class="btn-primary"
+      class="btn-primary flex items-center gap-2 group"
       type="submit"
       [disabled]="form.invalid"
     >
-      <span class="mr-2">Enviar</span>
-      <i class="fa-regular fa-paper-plane"></i>
+      <span class="text-sm font-semibold">Enviar</span>
+      <i class="fa-regular fa-paper-plane group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></i>
     </button>
   </div>
-
-
 </form>

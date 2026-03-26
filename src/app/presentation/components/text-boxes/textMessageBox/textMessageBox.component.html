@@ -1,35 +1,30 @@
 <form
   [formGroup]="form"
   (ngSubmit)="handleSubmit()"
-  class="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4"
+  class="flex flex-row items-center h-16 rounded-2xl bg-zinc-900/50 border border-white/5 backdrop-blur-md w-full px-4 transition-all duration-300 focus-within:border-violet-500/30 focus-within:bg-zinc-900/80 shadow-2xl"
 >
-
   <div class="flex-grow">
     <div class="relative w-full">
-
       <input
         type="text"
         autofocus
-        class="flex w-full border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
+        class="flex w-full bg-transparent border-none text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-0 pl-2 h-10 text-sm"
         [placeholder]="placeholder"
         formControlName="prompt"
         [autocomplete]=" disableCorrections ? 'on':'off'"
         [spellcheck]=" disableCorrections ? 'on':'off'"
       >
-
     </div>
   </div>
 
   <div class="ml-4">
     <button
-      class="btn-primary"
+      class="btn-primary flex items-center gap-2 group"
       type="submit"
       [disabled]="form.invalid"
     >
-      <span class="mr-2">Enviar</span>
-      <i class="fa-regular fa-paper-plane"></i>
+      <span class="text-sm font-semibold">Enviar</span>
+      <i class="fa-regular fa-paper-plane group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></i>
     </button>
   </div>
-
-
 </form>

@@ -2,57 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #09090b;
+  --bg-secondary: #0c0c0e;
+  --bg-card: #121215;
+  --bg-accent: rgba(167, 139, 250, 0.1);
+  --accent: #a78bfa;
+  --accent-hover: #c4b5fd;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 16px;
+}
+
 html, body {
-  background-color: #000000;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
-
-h1 {
-  @apply text-3xl font-bold mb-4;
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-p {
-  @apply mb-4;
+::-webkit-scrollbar-track {
+  background: var(--bg);
 }
 
-ul {
-  @apply list-disc list-inside;
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 10px;
 }
 
-strong {
-  @apply font-bold text-indigo-400 text-xl;
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }
 
-em {
-  @apply italic text-pink-500;
+h1, h2, h3, h4 {
+  font-family: 'Outfit', sans-serif;
+  @apply font-semibold;
 }
-
 
 .btn-primary {
-  @apply bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl hover:bg-indigo-700 transition-all duration-200 ease-in-out;
+  @apply relative overflow-hidden bg-violet-600 text-white font-medium py-2.5 px-6 rounded-xl 
+         hover:bg-violet-500 transition-all duration-300 shadow-lg shadow-violet-900/20 active:scale-95;
 }
 
 .btn-primary:disabled {
-  @apply bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl opacity-50 cursor-not-allowed;
+  @apply opacity-50 cursor-not-allowed grayscale;
 }
 
 .chat-container {
-  @apply flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-white bg-opacity-5 h-[calc(100vh-90px)] p-4 w-[calc(100vw-500px)];
+  @apply flex flex-col flex-auto rounded-3xl bg-zinc-900/30 border border-white/5 backdrop-blur-md 
+         h-[calc(100vh-120px)] p-6;
 }
 
 .chat-messages {
-  @apply flex flex-col h-full overflow-x-auto mb-4 overflow-scroll;
+  @apply flex flex-col h-full overflow-y-auto pr-2 gap-4;
 }
 
+/* Glassmorphism Classes */
+.glass {
+  @apply bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl;
+}
 
 /* Animations */
-
-.fade-in { animation: fadeIn .3s; }
+.fade-in { 
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
